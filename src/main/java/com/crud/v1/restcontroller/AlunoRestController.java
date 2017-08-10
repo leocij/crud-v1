@@ -59,7 +59,7 @@ public class AlunoRestController {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody HttpEntity<Void> update(@RequestBody AlunoRepresentation alunoRepresentation,
 			@PathVariable("id") Long id) {
 
@@ -69,8 +69,8 @@ public class AlunoRestController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody HttpEntity<AlunoRepresentation> delete(@PathVariable("id") Long id) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody HttpEntity<AlunoRepresentation> delete(@RequestBody int deletar, @PathVariable("id") Long id) {
 
 		Aluno aluno = alunoService.findById(id);
 		AlunoRepresentation alunoRepresentation = new AlunoRepresentation(aluno);
