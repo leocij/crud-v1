@@ -1,6 +1,7 @@
 window.onload = function () {
     document.getElementById("titulo").innerHTML = "Listagem de Alunos.";
     document.getElementById("edtAluno").style.display = "none";
+    document.getElementById("cadastroAluno").style.display = "none";
     enviaGet();
 };
 
@@ -63,7 +64,12 @@ function edtUpdate() {
 
 function enviaPost(dados, id) {
 	var xmlhttp = new XMLHttpRequest();
-	var url = "http://localhost:5000/alunos/" + id;
+	if(id !== 0) {
+		var url = "http://localhost:5000/alunos/" + id;
+	} else {
+		var url = "http://localhost:5000/alunos";
+	}
+	
 
 	xmlhttp.onreadystatechange = function () {
 	    if (this.readyState === 4 && this.status === 200) {
@@ -75,3 +81,18 @@ function enviaPost(dados, id) {
 	xmlhttp.send(JSON.stringify(dados));
 }
 	
+function mostraCadastroAluno() {
+	document.getElementById("principal").style.display = "none";
+	document.getElementById("cadastroAluno").style.display = "block";
+}
+
+function cadSave(){
+	var cadNome = document.getElementById("cadNome");
+	var cadIdade = document.getElementById("cadIdade");
+	var dados = new Object();
+	dados.nome = cadNome.value;
+	dados.idade = cadIdade.value;
+	
+	enviaPost(dados, 0);
+	location.reload();
+}

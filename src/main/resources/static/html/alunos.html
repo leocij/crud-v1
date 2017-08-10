@@ -13,22 +13,40 @@
         			Idade: <input type="text" id="txtIdade" name="txtIdade"><br><br>
         			<button type="button" onclick="edtUpdate();">Salvar</button>
         		</div>
+        		<br><br>
         	</div>
         	
-        	<br><br>
-        	
-            <div id="titulo"></div>
-            <div>
-                <table id="tblAlunos" border="1">
-                    <tr>
-                        <th>Editar</th>
-                        <th>Apagar</th>
-                        <th>Identifier</th>
-                        <th>Nome</th>
-                        <th>Idade</th>
-                    </tr>
-                </table>
-            </div>
+        	<!-- Bloco Principal -->
+        	<div id="principal">
+	        	<div id="btnCadastrar">
+	        		<button type="button" onclick="mostraCadastroAluno();">Cadastrar</button>
+	        	</div>
+	        	
+	        	<br>
+	        	
+	            <div id="titulo"></div>
+	            <div>
+	                <table id="tblAlunos" border="1">
+	                    <tr>
+	                        <th>Editar</th>
+	                        <th>Apagar</th>
+	                        <th>Identifier</th>
+	                        <th>Nome</th>
+	                        <th>Idade</th>
+	                    </tr>
+	                </table>
+	            </div>
+	    	</div>
+	    	<!-- Fim Bloco Principal -->
+	    	
+	    	<!-- Formulário de cadastro de aluno -->
+	    	<div id="cadastroAluno">
+	    		<div>
+        			Nome: <input type="text" id="cadNome"><br><br>
+        			Idade: <input type="text" id="cadIdade"><br><br>
+        			<button type="button" onclick="cadSave();">Salvar</button>
+        		</div>
+	    	</div>
         </div>
     </body>
 </html>
