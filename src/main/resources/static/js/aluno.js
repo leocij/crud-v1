@@ -57,8 +57,8 @@ function edtUpdate() {
     dados.idade = txtIdade.value;
 
     enviaPost(dados, txtId.value);
-	
-	document.getElementById("edtAluno").style.display = "none";
+
+	location.reload();
 }
 
 function enviaPost(dados, id) {
