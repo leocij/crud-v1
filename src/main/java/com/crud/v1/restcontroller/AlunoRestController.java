@@ -69,8 +69,8 @@ public class AlunoRestController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody HttpEntity<AlunoRepresentation> delete(@PathVariable("id") Long id) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody HttpEntity<AlunoRepresentation> delete(@RequestBody int deletar, @PathVariable("id") Long id) {
 
 		Aluno aluno = alunoService.findById(id);
 		AlunoRepresentation alunoRepresentation = new AlunoRepresentation(aluno);

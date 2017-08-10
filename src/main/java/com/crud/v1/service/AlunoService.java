@@ -47,6 +47,10 @@ public class AlunoService {
 		if(!exist(aluno.getId())) {
 			throw new AlunoNotFoundException("Aluno com esse id não existe: " + aluno.getId());
 		}
+		if(aluno.getNome().equals("deletarObject")) {
+			delete(aluno.getId());
+			return null;
+		}
 		return alunoRepository.save(aluno);
 	}
 	
