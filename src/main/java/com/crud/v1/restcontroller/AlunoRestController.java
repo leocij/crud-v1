@@ -59,7 +59,7 @@ public class AlunoRestController {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody HttpEntity<Void> update(@RequestBody AlunoRepresentation alunoRepresentation,
 			@PathVariable("id") Long id) {
 

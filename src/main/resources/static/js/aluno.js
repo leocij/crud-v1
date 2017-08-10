@@ -1,22 +1,25 @@
 window.onload = function () {
     document.getElementById("titulo").innerHTML = "Listagem de Alunos.";
     document.getElementById("edtAluno").style.display = "none";
+    enviaGet();
 };
 
-var xmlhttp = new XMLHttpRequest();
-var url = "http://localhost:5000/alunos";
+function enviaGet() {
+	var xmlhttp = new XMLHttpRequest();
+	var url = "http://localhost:5000/alunos";
 
-xmlhttp.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-        var myArr = JSON.parse(this.responseText);
-        myFunction(myArr);
-    }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
+	xmlhttp.onreadystatechange = function () {
+	    if (this.readyState === 4 && this.status === 200) {
+	        var myArr = JSON.parse(this.responseText);
+	        myFunction(myArr);
+	    }
+	};
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+}
 
 function myFunction(arr) {
-    var tblAlunos = document.getElementById("tblAlunos");
+    //var tblAlunos = document.getElementById("tblAlunos");
     arr.forEach(function (object) {
         var tr = document.createElement("tr");
         tr.setAttribute("id", "btn" + object.identifier);
@@ -49,8 +52,26 @@ function edtUpdate() {
     var txtNome = document.getElementById("txtNome");
     var txtIdade = document.getElementById("txtIdade");
     
-    alert(txtId.value + txtNome.value + txtIdade.value);
+    var dados = new Object();
+    dados.nome = txtNome.value;
+    dados.idade = txtIdade.value;
+
+    enviaPost(dados, txtId.value);
 	
 	document.getElementById("edtAluno").style.display = "none";
+}
+
+function enviaPost(dados, id) {
+	var xmlhttp = new XMLHttpRequest();
+	var url = "http://localhost:5000/alunos/" + id;
+
+	xmlhttp.onreadystatechange = function () {
+	    if (this.readyState === 4 && this.status === 200) {
+	        alert(this.responseText);
+	    }
+	};
+	xmlhttp.open("POST", url, true);
+	xmlhttp.setRequestHeader("Content-Type","Application/json");
+	xmlhttp.send(JSON.stringify(dados));
 }
 	
