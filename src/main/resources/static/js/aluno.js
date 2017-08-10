@@ -32,8 +32,10 @@ function myFunction(arr) {
 function editar(btnId) {
     document.getElementById("edtAluno").style.display = "block";
     var tr = document.getElementById(btnId);
+    var txtId = document.getElementById("txtId");
     var txtNome = document.getElementById("txtNome");
     var txtIdade = document.getElementById("txtIdade");
+    txtId.value = tr.cells[2].textContent;
     txtNome.value = tr.cells[3].textContent;
     txtIdade.value = tr.cells[4].textContent;
 }
@@ -43,6 +45,12 @@ function apagar() {
 }
 
 function edtUpdate() {
+	var txtId = document.getElementById("txtId");
+    var txtNome = document.getElementById("txtNome");
+    var txtIdade = document.getElementById("txtIdade");
+    
+    alert(txtId.value + txtNome.value + txtIdade.value);
 	
+	document.getElementById("edtAluno").style.display = "none";
 }
 	
